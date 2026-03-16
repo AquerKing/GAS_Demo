@@ -1,7 +1,7 @@
 ﻿// Copyright AquerKing
 
 
-#include "GAS_Demo/Public/Characters/PlayerCharacter.h"
+#include "GAS_Demo/Public/Characters/GD_PlayerCharacter.h"
 
 #include "Camera/CameraComponent.h"
 #include "Components/CapsuleComponent.h"
@@ -9,7 +9,7 @@
 #include "GameFramework/SpringArmComponent.h"
 
 
-APlayerCharacter::APlayerCharacter()
+AGD_PlayerCharacter::AGD_PlayerCharacter()
 {
 	PrimaryActorTick.bCanEverTick = false;
 

@@ -1,10 +1,10 @@
 ﻿// Copyright AquerKing
 
 
-#include "GAS_Demo/Public/Characters/CharacterBase.h"
+#include "GAS_Demo/Public/Characters/GD_CharacterBase.h"
 
 
-ACharacterBase::ACharacterBase()
+AGD_CharacterBase::AGD_CharacterBase()
 {
 	PrimaryActorTick.bCanEverTick = false;
 

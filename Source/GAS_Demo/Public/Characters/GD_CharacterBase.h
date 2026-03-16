@@ -4,13 +4,13 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/Character.h"
-#include "CharacterBase.generated.h"
+#include "GD_CharacterBase.generated.h"
 
 UCLASS(Abstract)
-class GAS_DEMO_API ACharacterBase : public ACharacter
+class GAS_DEMO_API AGD_CharacterBase : public ACharacter
 {
 	GENERATED_BODY()
 
 public:
-	ACharacterBase();
+	AGD_CharacterBase();
 };
