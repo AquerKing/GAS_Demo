@@ -24,17 +24,22 @@ private:
 	UPROPERTY(EditDefaultsOnly, Category="GASDemo|Input")
 	TArray<TObjectPtr<UInputMappingContext>> InputMappingContexts;
 
-	UPROPERTY(EditDefaultsOnly, Category="GASDemo|Input")
+	UPROPERTY(EditDefaultsOnly, Category="GASDemo|Input|Movement")
 	TObjectPtr<UInputAction> JumpAction;
 
-	UPROPERTY(EditDefaultsOnly, Category="GASDemo|Input")
+	UPROPERTY(EditDefaultsOnly, Category="GASDemo|Input|Movement")
 	TObjectPtr<UInputAction> MoveAction;
 
-	UPROPERTY(EditDefaultsOnly, Category="GASDemo|Input")
+	UPROPERTY(EditDefaultsOnly, Category="GASDemo|Input|Movement")
 	TObjectPtr<UInputAction> LookAction;
 
-	void Jump();
-	void StopJumping();
-	void Move(const FInputActionValue& Value);
-	void Look(const FInputActionValue& Value);
+	UPROPERTY(EditDefaultsOnly, Category="GASDemo|Input|Abilities")
+	TObjectPtr<UInputAction> PrimaryAction;
+
+	void Jump_ActionCallback();
+	void StopJumping_ActionCallback();
+	void Move_ActionCallback(const FInputActionValue& Value);
+	void Look_ActionCallback(const FInputActionValue& Value);
+	
+	void Primary_ActionCallback();
 };

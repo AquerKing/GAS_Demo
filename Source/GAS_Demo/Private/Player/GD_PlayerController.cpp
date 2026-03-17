@@ -30,16 +30,20 @@ void AGD_PlayerController::SetupInputComponent()
 		return;
 	}
 
-	EnhancedInputComponent->BindAction(JumpAction, ETriggerEvent::Started, this, &AGD_PlayerController::Jump);
+	EnhancedInputComponent->BindAction(JumpAction, ETriggerEvent::Started, this,
+	                                   &AGD_PlayerController::Jump_ActionCallback);
 	EnhancedInputComponent->BindAction(JumpAction, ETriggerEvent::Completed, this,
-	                                   &AGD_PlayerController::StopJumping);
+	                                   &AGD_PlayerController::StopJumping_ActionCallback);
 	EnhancedInputComponent->BindAction(MoveAction, ETriggerEvent::Triggered, this,
-	                                   &AGD_PlayerController::Move);
+	                                   &AGD_PlayerController::Move_ActionCallback);
 	EnhancedInputComponent->BindAction(LookAction, ETriggerEvent::Triggered, this,
-	                                   &AGD_PlayerController::Look);
+	                                   &AGD_PlayerController::Look_ActionCallback);
+
+	EnhancedInputComponent->BindAction(PrimaryAction, ETriggerEvent::Started, this,
+	                                   &AGD_PlayerController::Primary_ActionCallback);
 }
 
-void AGD_PlayerController::Jump()
+void AGD_PlayerController::Jump_ActionCallback()
 {
 	if (!IsValid(GetCharacter()))
 	{
@@ -49,7 +53,7 @@ void AGD_PlayerController::Jump()
 	GetCharacter()->Jump();
 }
 
-void AGD_PlayerController::StopJumping()
+void AGD_PlayerController::StopJumping_ActionCallback()
 {
 	if (!IsValid(GetCharacter()))
 	{
@@ -59,7 +63,7 @@ void AGD_PlayerController::StopJumping()
 	GetCharacter()->StopJumping();
 }
 
-void AGD_PlayerController::Move(const FInputActionValue& Value)
+void AGD_PlayerController::Move_ActionCallback(const FInputActionValue& Value)
 {
 	if (!IsValid(GetPawn()))
 	{
@@ -77,10 +81,15 @@ void AGD_PlayerController::Move(const FInputActionValue& Value)
 	GetPawn()->AddMovementInput(RightDirection, MovementVector.X);
 }
 
-void AGD_PlayerController::Look(const FInputActionValue& Value)
+void AGD_PlayerController::Look_ActionCallback(const FInputActionValue& Value)
 {
 	const FVector2D LookAxisVector = Value.Get<FVector2D>();
 
 	AddYawInput(LookAxisVector.X);
 	AddPitchInput(LookAxisVector.Y);
+}
+
+void AGD_PlayerController::Primary_ActionCallback()
+{
+	UE_LOG(LogTemp, Verbose, TEXT("Primary action triggered."));
 }
