@@ -6,6 +6,7 @@
 #include "GameFramework/PlayerController.h"
 #include "GD_PlayerController.generated.h"
 
+struct FGameplayTag;
 struct FInputActionValue;
 class UInputAction;
 class UInputMappingContext;
@@ -35,6 +36,12 @@ private:
 
 	UPROPERTY(EditDefaultsOnly, Category="GASDemo|Input|Abilities")
 	TObjectPtr<UInputAction> PrimaryAction;
+	
+	UPROPERTY(EditDefaultsOnly, Category="GASDemo|Input|Abilities")
+	TObjectPtr<UInputAction> SecondaryAction;
+	
+	UPROPERTY(EditDefaultsOnly, Category="GASDemo|Input|Abilities")
+	TObjectPtr<UInputAction> TertiaryAction;
 
 	void Jump_ActionCallback();
 	void StopJumping_ActionCallback();
@@ -42,4 +49,8 @@ private:
 	void Look_ActionCallback(const FInputActionValue& Value);
 	
 	void Primary_ActionCallback();
+	void Secondary_ActionCallback();
+	void Tertiary_ActionCallback();
+	
+	void ActivateAbility(const FGameplayTag& AbilityTag) const;
 };

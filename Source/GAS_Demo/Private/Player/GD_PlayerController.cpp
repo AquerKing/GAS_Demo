@@ -3,10 +3,13 @@
 
 #include "GAS_Demo/Public/Player/GD_PlayerController.h"
 
+#include "AbilitySystemBlueprintLibrary.h"
+#include "AbilitySystemComponent.h"
 #include "EnhancedInputComponent.h"
 #include "EnhancedInputSubsystems.h"
 #include "InputMappingContext.h"
 #include "GameFramework/Character.h"
+#include "GameplayTags/GD_Tags.h"
 
 void AGD_PlayerController::SetupInputComponent()
 {
@@ -41,6 +44,10 @@ void AGD_PlayerController::SetupInputComponent()
 
 	EnhancedInputComponent->BindAction(PrimaryAction, ETriggerEvent::Started, this,
 	                                   &AGD_PlayerController::Primary_ActionCallback);
+	EnhancedInputComponent->BindAction(SecondaryAction, ETriggerEvent::Started, this,
+	                                   &AGD_PlayerController::Secondary_ActionCallback);
+	EnhancedInputComponent->BindAction(TertiaryAction, ETriggerEvent::Started, this,
+	                                   &AGD_PlayerController::Tertiary_ActionCallback);
 }
 
 void AGD_PlayerController::Jump_ActionCallback()
@@ -91,5 +98,26 @@ void AGD_PlayerController::Look_ActionCallback(const FInputActionValue& Value)
 
 void AGD_PlayerController::Primary_ActionCallback()
 {
-	UE_LOG(LogTemp, Verbose, TEXT("Primary action triggered."));
+	ActivateAbility(GDTags::GDAbilities::Primary);
+}
+
+void AGD_PlayerController::Secondary_ActionCallback()
+{
+	ActivateAbility(GDTags::GDAbilities::Secondary);
+}
+
+void AGD_PlayerController::Tertiary_ActionCallback()
+{
+	ActivateAbility(GDTags::GDAbilities::Tertiary);
+}
+
+void AGD_PlayerController::ActivateAbility(const FGameplayTag& AbilityTag) const
+{
+	UAbilitySystemComponent* ASC = UAbilitySystemBlueprintLibrary::GetAbilitySystemComponent(GetPawn());
+	if (!IsValid(ASC))
+	{
+		return;
+	}
+
+	ASC->TryActivateAbilitiesByTag(AbilityTag.GetSingleTagContainer());
 }
