@@ -42,7 +42,7 @@ void AGD_PlayerController::SetupInputComponent()
 	EnhancedInputComponent->BindAction(LookAction, ETriggerEvent::Triggered, this,
 	                                   &AGD_PlayerController::Look_ActionCallback);
 
-	EnhancedInputComponent->BindAction(PrimaryAction, ETriggerEvent::Started, this,
+	EnhancedInputComponent->BindAction(PrimaryAction, ETriggerEvent::Triggered, this,
 	                                   &AGD_PlayerController::Primary_ActionCallback);
 	EnhancedInputComponent->BindAction(SecondaryAction, ETriggerEvent::Started, this,
 	                                   &AGD_PlayerController::Secondary_ActionCallback);
