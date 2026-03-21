@@ -18,7 +18,7 @@ class GAS_DEMO_API AGD_PlayerState : public APlayerState, public IAbilitySystemI
 
 public:
 	AGD_PlayerState();
-	
+
 	virtual UAbilitySystemComponent* GetAbilitySystemComponent() const override;
 
 private:
