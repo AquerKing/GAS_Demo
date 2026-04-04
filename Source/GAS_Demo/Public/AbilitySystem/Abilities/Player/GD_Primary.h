@@ -22,8 +22,7 @@ public:
 	void SendHitReactEventToActor(const TArray<AActor*>& ActorsHit);
 
 private:
-	void DrawHitBoxOverlapDebugs(const TArray<FOverlapResult>& OverlapResults,
-	                             const FVector& HitBoxLocation) const;
+	void DrawHitBoxOverlapDebugs(const TArray<FOverlapResult>& OverlapResults, const FVector& HitBoxLocation) const;
 
 	UPROPERTY(EditDefaultsOnly, Category="GASDemo|Abilities")
 	float HitBoxRadius = 100.0f;

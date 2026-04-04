@@ -15,8 +15,7 @@ class GAS_DEMO_API UGD_GameplayAbility : public UGameplayAbility
 	GENERATED_BODY()
 
 public:
-	virtual void ActivateAbility(const FGameplayAbilitySpecHandle Handle,
-	                             const FGameplayAbilityActorInfo* ActorInfo,
+	virtual void ActivateAbility(const FGameplayAbilitySpecHandle Handle, const FGameplayAbilityActorInfo* ActorInfo,
 	                             const FGameplayAbilityActivationInfo ActivationInfo,
 	                             const FGameplayEventData* TriggerEventData) override;
 

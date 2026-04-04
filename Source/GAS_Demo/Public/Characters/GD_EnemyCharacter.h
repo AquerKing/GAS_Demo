@@ -6,6 +6,7 @@
 #include "GD_CharacterBase.h"
 #include "GD_EnemyCharacter.generated.h"
 
+class UAttributeSet;
 class UAbilitySystemComponent;
 
 UCLASS()
@@ -17,6 +18,7 @@ public:
 	AGD_EnemyCharacter();
 
 	virtual UAbilitySystemComponent* GetAbilitySystemComponent() const override;
+	virtual UAttributeSet* GetAttributeSet() const override;
 
 protected:
 	virtual void BeginPlay() override;
@@ -24,4 +26,7 @@ protected:
 private:
 	UPROPERTY(VisibleAnywhere)
 	TObjectPtr<UAbilitySystemComponent> AbilitySystemComponent;
+	
+	UPROPERTY()
+	TObjectPtr<UAttributeSet> AttributeSet;
 };

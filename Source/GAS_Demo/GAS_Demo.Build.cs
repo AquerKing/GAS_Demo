@@ -11,7 +11,7 @@ public class GAS_Demo : ModuleRules
 		PublicDependencyModuleNames.AddRange(new string[]
 		{
 			"Core", "CoreUObject", "Engine", "InputCore", "EnhancedInput", "GameplayAbilities", "GameplayTags",
-			"GameplayTasks"
+			"GameplayTasks", "UMG",
 		});
 
 		PrivateDependencyModuleNames.AddRange(new string[] { });
